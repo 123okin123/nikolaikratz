@@ -29,6 +29,8 @@ module.exports = {
     'react/prop-types': [0],
     'css-modules/no-unused-class': [1, { camelCase: true }],
     'css-modules/no-undef-class': [1, { camelCase: true }],
+    'import/prefer-default-export': [0],
+    '@typescript-eslint/no-non-null-assertion': [1],
     camelcase: [1],
     // 'graphql/template-strings': ['error', {
     //   env: 'relay',

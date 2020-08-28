@@ -9,9 +9,13 @@ export default function useBlogData() {
             id
             frontmatter {
               date(formatString: "MMMM Do, YYYY")
-              author
               title
-              hero_image {
+              titleColor
+              company
+              bgGradientFrom
+              bgGradientTo
+              type
+              image {
                 childImageSharp {
                   fluid( maxWidth: 800 ) {
                     ...GatsbyImageSharpFluid

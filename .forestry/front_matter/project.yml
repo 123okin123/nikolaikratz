@@ -1,0 +1,42 @@
+---
+label: Project
+hide_body: false
+fields:
+- name: date
+  type: datetime
+  label: date
+  description: Date post was created
+  config:
+    required: false
+    date_format: 
+    time_format: 
+    display_utc: false
+  default: now
+- name: title
+  type: text
+  label: title
+- name: type
+  type: select
+  default: ''
+  config:
+    required: true
+    options: []
+    source:
+      type: documents
+      section: type-list
+      file: content/data/types.yaml
+      path: types
+  label: Type
+  description: Enter type of project
+- name: company
+  type: text
+  label: company
+- name: image
+  type: file
+  config:
+    maxSize: '10'
+  label: hero image
+  description: Enter hero image for blog post here
+  default: "/content/images/sarah-dorweiler-9Z1KRIfpBTM-unsplash.jpg"
+pages:
+- content/posts/ciara.md

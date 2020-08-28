@@ -1,10 +1,15 @@
 ---
 date: 2019-08-08T22:42:09.000+00:00
-title: Sunflower Sutra
-author: Allen Ginsberg
-hero_image: "/content/images/adrien-olichon--aOsCcTJXWY-unsplash.jpg"
-
+title: Ciara
+type: 'web'
+company: Ciara GmbH
+titleColor: '#fff'
+bgGradientFrom: '#5BCDF8'
+bgGradientTo: '#0064D9'
+image: '/content/images/adrien-olichon--aOsCcTJXWY-unsplash.jpg'
+slug: jk
 ---
+
 I walked on the banks of the tincan banana dock and sat down under the huge shade of a Southern Pacific locomotive to look for the sunset over the box house hills and cry.
 
 Jack Kerouac sat beside me on a busted rusty iron pole, companion, we thought the same thoughts of the soul, bleak and blue and sad-eyed, surrounded by the gnarled steel roots of trees of machinery.

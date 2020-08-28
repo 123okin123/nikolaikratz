@@ -23,33 +23,44 @@ module.exports.onCreateNode = ({ node, actions }) => {
   }
 };
 
-module.exports.createPages = async ({ graphql, actions }) => {
+module.exports.onCreatePage = ({ page, actions }) => {
   const { createPage } = actions;
-  // dynamically create pages here
-  // get path to template
-  const blogTemplate = path.resolve('./src/templates/blog.tsx');
-  // get slugs
-  const response = await graphql(`
-    query {
-      allMarkdownRemark {
-        edges {
-          node {
-            fields {
-              slug
-            }
-          }
-        }
-      }
-    }
-  `);
-  // create new pages with unique slug
-  response.data.allMarkdownRemark.edges.forEach((edge) => {
-    createPage({
-      component: blogTemplate,
-      path: `/blog/${edge.node.fields.slug}`,
-      context: {
-        slug: edge.node.fields.slug,
-      },
-    });
-  });
+  // Make the front page match everything client side.
+  // Normally your paths should be a bit more judicious.
+  if (page.path === '/') {
+    // eslint-disable-next-line no-param-reassign
+    page.matchPath = '/*';
+    createPage(page);
+  }
 };
+
+// module.exports.createPages = async ({ graphql, actions }) => {
+//   const { createPage } = actions;
+//   // dynamically create pages here
+//   // get path to template
+//   const blogTemplate = path.resolve('./src/templates/blog.tsx');
+//   // get slugs
+//   const response = await graphql(`
+//     query {
+//       allMarkdownRemark {
+//         edges {
+//           node {
+//             fields {
+//               slug
+//             }
+//           }
+//         }
+//       }
+//     }
+//   `);
+//   // create new pages with unique slug
+//   response.data.allMarkdownRemark.edges.forEach((edge) => {
+//     createPage({
+//       component: blogTemplate,
+//       path: `/blog/${edge.node.fields.slug}`,
+//       context: {
+//         slug: edge.node.fields.slug,
+//       },
+//     });
+//   });
+// };

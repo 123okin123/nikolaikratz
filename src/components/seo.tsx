@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { Helmet } from 'react-helmet';
-import useSiteMetadata from '../static-queries/useSiteMetadata';
+import useSiteMetadata from '../hooks/static-queries/use-site-metadata';
 
 export interface SEOProps {
   description?: string,

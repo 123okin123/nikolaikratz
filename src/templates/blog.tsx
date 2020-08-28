@@ -2,7 +2,7 @@ import { graphql, Link, PageProps } from 'gatsby';
 import Img from 'gatsby-image';
 import React, { ReactElement } from 'react';
 import Layout from '../components/layout/layout';
-import useBlogData from '../static-queries/useBlogData';
+import useBlogData from '../hooks/static-queries/use-blog-data';
 import blogTemplateStyles from './blog.module.scss';
 
 export default function Blog({ data }: PageProps<{markdownRemark: any}>): ReactElement {
@@ -23,10 +23,10 @@ export default function Blog({ data }: PageProps<{markdownRemark: any}>): ReactE
   return (
     <Layout>
 
-      <article className={blogTemplateStyles.blog}>
+      {/* <article className={blogTemplateStyles.blog}>
         <figure className={blogTemplateStyles.blog__hero}>
           <Img
-            fluid={md.frontmatter.hero_image.childImageSharp.fluid}
+            fluid={md.frontmatter.image.childImageSharp.fluid}
             alt={md.frontmatter.title}
             style={{ height: '100%' }}
           />
@@ -51,7 +51,7 @@ export default function Blog({ data }: PageProps<{markdownRemark: any}>): ReactE
             </svg>
           </Link>
         </div>
-      </article>
+      </article> */}
     </Layout>
   );
 }
@@ -65,10 +65,14 @@ export const getPostData = graphql`
         slug
       }
       frontmatter {
-        title
-        author
         date(formatString: "MMMM Do, YYYY")
-        hero_image {
+        title
+        titleColor
+        company
+        bgGradientFrom
+        bgGradientTo
+        type
+        image {
           childImageSharp {
             fluid(maxWidth: 1500) {
               ...GatsbyImageSharpFluid

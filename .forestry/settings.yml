@@ -20,15 +20,15 @@ sections:
     label: Content
   - type: directory
     path: content/posts
-    label: Blog Posts
+    label: Projects
     create: documents
     match: "**/*"
     new_doc_ext: md
     templates:
-    - blog-post
+    - project
   - type: document
-    path: content/data/authors.yaml
-    label: Author List
+    path: content/data/types.yaml
+    label: Project Type List
   - type: document
     path: content/data/info.json
     label: Info Page

@@ -1,6 +1,6 @@
 import { Link } from 'gatsby';
 import React, { ReactElement } from 'react';
-import useSiteMetadata from '../../static-queries/useSiteMetadata';
+import useSiteMetadata from '../../hooks/static-queries/use-site-metadata';
 
 const Header = (): ReactElement => {
   const { menu } = useSiteMetadata();

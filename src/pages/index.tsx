@@ -1,10 +1,8 @@
 import { PageProps } from 'gatsby';
 import React from 'react';
-import BlogList from '../components/portfolio-list/portfolio-list';
 import Layout from '../components/layout/layout';
+import { PortfolioListRouted } from '../components/portfolio-list/portfolio-list';
 import SEO from '../components/seo';
-import PortfolioCard from '../components/portfolio-card/portfolio-card';
-import PortfolioList from '../components/portfolio-list/portfolio-list';
 
 const IndexPage: React.FC<PageProps<null>> = () => (
   <Layout>
@@ -25,7 +23,7 @@ const IndexPage: React.FC<PageProps<null>> = () => (
         Native & React in the last years.
       </p>
       <section className="py-12">
-        <PortfolioList />
+        <PortfolioListRouted />
       </section>
     </div>
   </Layout>
