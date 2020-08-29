@@ -36,8 +36,6 @@ export const CardContent = React.memo<CardContentDataProps>(({ data }: CardConte
       style={{
         background: `linear-gradient(180deg, ${data.bgGradientFrom}, ${data.bgGradientTo})`,
       }}
-      className={`${styles.card}`}
-
     >
       <div style={{ color: data.titleColor }} className="px-6 py-6 text-center">
         <p className="text-xl font-semibold">{data.title}</p>
@@ -53,7 +51,7 @@ export const CardContent = React.memo<CardContentDataProps>(({ data }: CardConte
       </div>
 
       <img className="w-16 mx-auto mt-6" src={icons[data.type!]} alt={data.type} />
-      <p className={`mx-auto mb-6 ${styles.typeText}`}>{data.type}</p>
+      <p className={`text-center mb-6 ${styles.typeText}`}>{data.type}</p>
     </div>
   );
 });

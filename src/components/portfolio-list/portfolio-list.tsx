@@ -12,7 +12,7 @@ function PortfolioList({ match }: {match: MatchProp<{id: string}>}): ReactElemen
   const blogData = useBlogData();
   function renderBlogData() {
     return (
-      <div className="flex space-x-6">
+      <div className={blogListStyles.horizontalScrollWrapper}>
         {blogData
           .filter((blog) => blog.node?.frontmatter?.title !== '')
           .map((blog) => (
@@ -35,8 +35,10 @@ function PortfolioList({ match }: {match: MatchProp<{id: string}>}): ReactElemen
   }
   return (
     <section>
-      <h3 className="font-semibold text-3xl mb-6">Portfolio</h3>
-      <ul className={blogListStyles.list}>{renderBlogData()}</ul>
+      <div className="container mx-auto px-6">
+        <h3 className="font-semibold text-3xl ">Portfolio</h3>
+      </div>
+      <div>{renderBlogData()}</div>
     </section>
   );
 }

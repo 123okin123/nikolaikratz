@@ -13,7 +13,7 @@
   position: fixed;
   z-index: 1;
   overflow: hidden;
-  padding: 40px 0;
+  padding: 40px;
 }
 
 .card-open-link {
@@ -31,10 +31,8 @@
   will-change: opacity;
   top: 0;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 990px;
+  left: 0;
+  width: 100vw;
 }
 
 .overlay a {
@@ -43,9 +41,7 @@
   top: 0;
   bottom: 0;
   width: 100vw;
-  left: 50%;
-
-  transform: translateX(-50%);
+  left: 0;
 }
 
 .card-content {
@@ -56,6 +52,11 @@
   width: 100%;
   height: 100%;
   margin: 0 auto;
+
+  -webkit-box-shadow: 10px 10px 30px 0px rgba(0, 0, 0, 0.29);
+  -moz-box-shadow: 10px 10px 30px 0px rgba(0, 0, 0, 0.29);
+  box-shadow: 10px 10px 30px 0px rgba(0, 0, 0, 0.29);
+  @apply w-64 rounded-xlg overflow-hidden flex-col flex;
 }
 
 .open .card-content {
