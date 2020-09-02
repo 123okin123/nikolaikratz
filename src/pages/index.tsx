@@ -1,14 +1,14 @@
 import { PageProps } from 'gatsby';
 import React from 'react';
-import Layout from '../components/layout/layout';
-import PortfolioList from '../components/portfolio-list/portfolio-list';
 import SEO from '../components/seo';
+import Layout from '../components/layout';
+import PortfolioList from '../components/molecules/portfolio-list';
 
 const IndexPage: React.FC<PageProps<null>> = () => (
   <Layout>
     <SEO title="Home" />
-    <div className="py-24 ">
-      <section className="container mx-auto px-6">
+    <div>
+      <section>
         <h1 className="font-bold text-6xl leading-tight">
           Hello,
           <br />
@@ -25,7 +25,7 @@ const IndexPage: React.FC<PageProps<null>> = () => (
         </p>
       </section>
 
-      <section className="py-12">
+      <section>
         <PortfolioList />
       </section>
     </div>

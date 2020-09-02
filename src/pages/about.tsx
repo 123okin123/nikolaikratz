@@ -1,8 +1,8 @@
 import { Link, PageProps } from 'gatsby';
 import React from 'react';
-import Layout from '../components/layout/layout';
 import SEO from '../components/seo';
 import useSiteMetadata from '../hooks/static-queries/use-site-metadata';
+import Layout from '../components/layout';
 
 const SecondPage: React.FC<PageProps<null>> = () => {
   const metaData = useSiteMetadata();
