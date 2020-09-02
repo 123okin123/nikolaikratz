@@ -1,7 +1,7 @@
 import { PageProps } from 'gatsby';
 import React from 'react';
 import Layout from '../components/layout/layout';
-import { PortfolioListRouted } from '../components/portfolio-list/portfolio-list';
+import PortfolioList from '../components/portfolio-list/portfolio-list';
 import SEO from '../components/seo';
 
 const IndexPage: React.FC<PageProps<null>> = () => (
@@ -26,7 +26,7 @@ const IndexPage: React.FC<PageProps<null>> = () => (
       </section>
 
       <section className="py-12">
-        <PortfolioListRouted />
+        <PortfolioList />
       </section>
     </div>
   </Layout>

@@ -3449,6 +3449,17 @@ type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
+type getMetadataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type getMetadataQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
+      Pick<SiteSiteMetadata, 'title' | 'description' | 'repoUrl'>
+      & { readonly infoData: Maybe<(
+        Pick<SiteSiteMetadataInfoData, 'cta' | 'description' | 'background_color'>
+        & { readonly contact: Maybe<Pick<SiteSiteMetadataInfoDataContact, 'email' | 'github_handle' | 'twitter_handle'>> }
+      )>, readonly menu: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataMenu, 'name' | 'link'>>>> }
+    )> }> };
+
 type GatsbyImageSharpFluidFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 type getBlogDataQueryVariables = Exact<{ [key: string]: never; }>;
@@ -3461,16 +3472,5 @@ type getBlogDataQuery = { readonly allMarkdownRemark: { readonly edges: Readonly
           & { readonly image: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> }
         )>, readonly fields: Maybe<Pick<MarkdownRemarkFields, 'slug'>> }
       ) }> } };
-
-type getMetadataQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type getMetadataQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
-      Pick<SiteSiteMetadata, 'title' | 'description' | 'repoUrl'>
-      & { readonly infoData: Maybe<(
-        Pick<SiteSiteMetadataInfoData, 'cta' | 'description' | 'background_color'>
-        & { readonly contact: Maybe<Pick<SiteSiteMetadataInfoDataContact, 'email' | 'github_handle' | 'twitter_handle'>> }
-      )>, readonly menu: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataMenu, 'name' | 'link'>>>> }
-    )> }> };
 
 }

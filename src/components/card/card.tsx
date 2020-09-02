@@ -1,16 +1,13 @@
+import { motion, useMotionValue } from 'framer-motion';
+import { Link } from 'gatsby';
 import * as React from 'react';
 import { memo, useRef } from 'react';
-import { motion, useMotionValue } from 'framer-motion';
-// import { Link } from 'gatsby';
-import { useHistory, Link } from 'react-router-dom';
-import { CardContent, CardContentData } from './card-content';
-import { Title } from './Title';
-import { Image } from './Image';
-import { openSpring, closeSpring } from './animations';
+import { useNavigate } from '@reach/router';
+import styled from 'styled-components';
 import { useInvertedBorderRadius } from '../../hooks/utils/use-inverted-border-radius';
 import { useScrollConstraints } from '../../hooks/utils/use-scroll-constraints';
-import { useWheelScroll } from '../../hooks/utils/use-wheel-scroll';
-import styles from './card.module.scss';
+import { closeSpring, openSpring } from './animations';
+import { CardInnerContent, CardContentData } from './card-inner-content';
 
 export interface CardData {
   id: string;
@@ -30,7 +27,7 @@ export const Card = memo(
   }: CardData) => {
     const y = useMotionValue(0);
     const zIndex = useMotionValue(isSelected ? 2 : 0);
-    const history = useHistory();
+    const navigate = useNavigate();
 
     // Maintain the visual border radius when we
     // perform the layoutTransition by inverting its scaleX/Y
@@ -41,7 +38,7 @@ export const Card = memo(
     const constraints = useScrollConstraints(cardRef, isSelected);
 
     function checkSwipeToDismiss() {
-      if (y.get() > dismissDistance) { history.push('/'); }
+      if (y.get() > dismissDistance) { navigate('/'); }
     }
 
     function checkZIndex(latest: {
@@ -66,11 +63,10 @@ export const Card = memo(
     return (
       <div ref={containerRef} style={{ position: 'relative' }}>
         <Overlay isSelected={isSelected} />
-        <div className={`${styles.cardContentContainer} ${isSelected && styles.open}`}>
-          <motion.div
+        <CardContentContainer className={isSelected ? 'open' : ''}>
+          <CardContent
             ref={cardRef}
             layout
-            className={styles.cardContent}
             style={{ ...inverted, zIndex, y }}
             transition={isSelected ? openSpring : closeSpring}
             drag={isSelected ? 'y' : false}
@@ -78,10 +74,10 @@ export const Card = memo(
             onDrag={checkSwipeToDismiss}
             onUpdate={checkZIndex}
           >
-            <CardContent data={data} />
-          </motion.div>
-        </div>
-        {!isSelected && <Link to={`/${id}`} className={styles.cardOpenLink} />}
+            <CardInnerContent data={data} />
+          </CardContent>
+        </CardContentContainer>
+        {!isSelected && <CardOpenLink to={`/?project=${id}`} />}
       </div>
     );
   },
@@ -89,13 +85,77 @@ export const Card = memo(
 );
 
 const Overlay = ({ isSelected }: {isSelected: boolean}) => (
-  <motion.div
+  <OverlayContent
     initial={false}
     animate={{ opacity: isSelected ? 1 : 0 }}
     transition={{ duration: 0.2 }}
     style={{ pointerEvents: isSelected ? 'auto' : 'none' }}
-    className={styles.overlay}
   >
     <Link to="/" />
-  </motion.div>
+  </OverlayContent>
 );
+
+const CardContentContainer = styled.div`
+  display: block;
+  height: 100%;
+  pointer-events: none;
+  position: relative;
+  width: 100%;
+  &.open {
+    left: 0;
+  overflow: hidden;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  }
+`;
+
+const CardContent = styled(motion.div)`
+
+  -moz-box-shadow: 10px 10px 30px 0px rgba(0, 0, 0, 0.29);
+  -webkit-box-shadow: 10px 10px 30px 0px rgba(0, 0, 0, 0.29);
+
+  box-shadow: 10px 10px 30px 0px rgba(0, 0, 0, 0.29);
+  height: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+
+  pointer-events: auto;
+  position: relative;
+  width: 100%;
+
+.open & {
+  height: auto;
+  max-width: 700px;
+  overflow: hidden;
+  width: 100%;
+}
+`;
+
+const CardOpenLink = styled(Link)`
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+`;
+
+const OverlayContent = styled(motion.div)`
+  background: rgba(0, 0, 0, 0.8);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  will-change: opacity;
+  z-index: 1;
+& a {
+  bottom: 0;
+  display: block;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+}
+`;

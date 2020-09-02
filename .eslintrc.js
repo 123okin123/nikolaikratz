@@ -3,7 +3,7 @@
 module.exports = {
   extends: ['airbnb', 'plugin:@typescript-eslint/recommended', 'plugin:css-modules/recommended'],
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'prettier', 'css-modules', 'graphql'],
+  plugins: ['@typescript-eslint', 'prettier', 'css-modules', 'graphql', 'better-styled-components'],
   settings: {
     'import/parsers': {
       '@typescript-eslint/parser': ['.ts', '.tsx'],
@@ -31,6 +31,7 @@ module.exports = {
     'css-modules/no-undef-class': [1, { camelCase: true }],
     'import/prefer-default-export': [0],
     '@typescript-eslint/no-non-null-assertion': [1],
+    'better-styled-components/sort-declarations-alphabetically': [2],
     camelcase: [1],
     // 'graphql/template-strings': ['error', {
     //   env: 'relay',

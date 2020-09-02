@@ -1,8 +1,6 @@
-import { motion, useInvertedScale } from 'framer-motion';
-import React, { ReactElement } from 'react';
-import Img, { FluidObject } from 'gatsby-image';
-
-import styles from './card-content.module.scss';
+import { useInvertedScale } from 'framer-motion';
+import { FluidObject } from 'gatsby-image';
+import React from 'react';
 
 export interface CardContentData {
   title?: string;
@@ -24,7 +22,7 @@ export interface CardContentDataProps {
   }
 }
 
-export const CardContent = React.memo<CardContentDataProps>(({ data }: CardContentDataProps) => {
+export const CardInnerContent = React.memo<CardContentDataProps>(({ data }: CardContentDataProps) => {
   const inverted = useInvertedScale();
   const icons: {[type: string]: string} = {
     web: '/image/laptop.svg',
@@ -33,25 +31,17 @@ export const CardContent = React.memo<CardContentDataProps>(({ data }: CardConte
 
   return (
     <div
+      className="w-100 h-100 object-left-bottom"
       style={{
         background: `linear-gradient(180deg, ${data.bgGradientFrom}, ${data.bgGradientTo})`,
       }}
     >
-      <div style={{ color: data.titleColor }} className="px-6 py-6 text-center">
+      <div style={{ color: data.titleColor }} className="px-6 py-6">
         <p className="text-xl font-semibold">{data.title}</p>
       </div>
-      <div className={styles.imageContainer}>
-        {data.image
-        && (
-          <Img
-            fluid={data.image}
-            alt={data.title}
-          />
-        )}
-      </div>
 
-      <img className="w-16 mx-auto mt-6" src={icons[data.type!]} alt={data.type} />
-      <p className={`text-center mb-6 ${styles.typeText}`}>{data.type}</p>
+      <img className="w-14 absolute mx-auto mt-6 " src={icons[data.type!]} alt={data.type} />
+      <p className="text-center mb-6 ">{data.type}</p>
     </div>
   );
 });
