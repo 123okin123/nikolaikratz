@@ -12,14 +12,8 @@ export interface CardContentData {
 }
 
 export interface CardContentDataProps {
-  data: {
-    title?: string;
-    titleColor?: string;
-    bgGradientFrom?: string;
-    bgGradientTo?: string;
-    image?: FluidObject | FluidObject[];
-    type?: string;
-  }
+  isSelected: boolean;
+  data: CardContentData;
 }
 
 export const CardInnerContent = React.memo<CardContentDataProps>(
@@ -31,18 +25,19 @@ export const CardInnerContent = React.memo<CardContentDataProps>(
     };
 
     return (
-      <div
-        className="w-100 h-100 object-left-bottom"
-        style={{
+      <div style={{ padding: '20px' }}>
+        <div style={{
+          height: '20px',
           background: `linear-gradient(180deg, ${data.bgGradientFrom}, ${data.bgGradientTo})`,
         }}
-      >
-        <div style={{ color: data.titleColor }} className="px-6 py-6">
-          <p className="text-xl font-semibold">{data.title}</p>
+        />
+
+        <div style={{ color: data.titleColor }}>
+          <p>{data.title}</p>
         </div>
 
-        <img className="w-14 absolute mx-auto mt-6 " src={icons[data.type!]} alt={data.type} />
-        <p className="text-center mb-6 ">{data.type}</p>
+        <img src={icons[data.type!]} alt={data.type} />
+        <p>{data.type}</p>
       </div>
     );
   },

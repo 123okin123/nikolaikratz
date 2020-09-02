@@ -61,7 +61,7 @@ export const Card = memo(
     // );
 
     return (
-      <div ref={containerRef} style={{ position: 'relative' }}>
+      <div ref={containerRef} style={{ position: 'relative', width: '200px', height: '300px' }}>
         <Overlay isSelected={isSelected} />
         <CardContentContainer className={isSelected ? 'open' : ''}>
           <CardContent
@@ -74,7 +74,7 @@ export const Card = memo(
             onDrag={checkSwipeToDismiss}
             onUpdate={checkZIndex}
           >
-            <CardInnerContent data={data} />
+            <CardInnerContent isSelected={isSelected} data={data} />
           </CardContent>
         </CardContentContainer>
         {!isSelected && <CardOpenLink to={`/?project=${id}`} />}

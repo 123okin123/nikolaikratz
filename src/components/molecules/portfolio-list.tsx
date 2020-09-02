@@ -10,34 +10,44 @@ export default function PortfolioList(): ReactElement {
 
   const { search } = useLocation();
   const { project } = queryString.parse(search);
-  const renderBlogData = () => (
-    <div className="">
-      {blogData
-        .filter((blog) => blog.node?.frontmatter?.title !== '')
-        .map((blog) => (
-          <Card
-            key={blog.node.id}
-            isSelected={project === blog.node.id}
-            data={{
-              title: blog.node.frontmatter?.title,
-              titleColor: blog.node.frontmatter?.titleColor,
-              bgGradientFrom: blog.node.frontmatter?.bgGradientFrom,
-              bgGradientTo: blog.node.frontmatter?.bgGradientTo,
-              image: blog.node.frontmatter?.image?.childImageSharp?.fluid,
-              type: blog.node.frontmatter?.type || 'web',
-            }}
-            id={blog.node.id}
-          />
-        ))}
-    </div>
-  );
 
   return (
     <section>
-      <div className="">
-        <h3 className="">Portfolio</h3>
+      <div>
+        <h3>Portfolio</h3>
       </div>
-      <div>{renderBlogData()}</div>
+      <ScrollWrapper>
+        {blogData
+          .filter((blog) => blog.node?.frontmatter?.title !== '')
+          .map((blog) => (
+            <CardWrapper>
+              <Card
+                key={blog.node.id}
+                isSelected={project === blog.node.id}
+                data={{
+                  title: blog.node.frontmatter?.title,
+                  titleColor: blog.node.frontmatter?.titleColor,
+                  bgGradientFrom: blog.node.frontmatter?.bgGradientFrom,
+                  bgGradientTo: blog.node.frontmatter?.bgGradientTo,
+                  image: blog.node.frontmatter?.image?.childImageSharp?.fluid,
+                  type: blog.node.frontmatter?.type || 'web',
+                }}
+                id={blog.node.id}
+              />
+            </CardWrapper>
+          ))}
+
+      </ScrollWrapper>
     </section>
   );
 }
+
+const ScrollWrapper = styled.div`
+    display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+`;
+
+const CardWrapper = styled.div`
+flex: 0 0 auto;
+`;

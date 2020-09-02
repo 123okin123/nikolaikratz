@@ -10,13 +10,13 @@ const IndexPage: React.FC<PageProps<null>> = () => (
     <SEO title="Home" />
     <Container>
       <section>
-        <h1 className="font-bold text-6xl leading-tight">
+        <h1>
           Hello,
           <br />
           I'm Nikolai Kratz
         </h1>
-        <h2 className="text-xl">Web & Mobile App Developer</h2>
-        <p className="mt-10 w-3/4">
+        <h2>Web & Mobile App Developer</h2>
+        <p>
           Started as an iOS Developer (Swift) I soon moved to
           JS Development and was able to gain experience in App
           Frameworks as well as Frontend and Backend Technologies.
