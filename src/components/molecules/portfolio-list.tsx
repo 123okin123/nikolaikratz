@@ -1,9 +1,9 @@
 import { useLocation } from '@reach/router';
 import queryString from 'query-string';
 import React, { ReactElement } from 'react';
+import styled from 'styled-components';
 import useBlogData from '../../hooks/static-queries/use-blog-data';
-import { Card } from '../card/card';
-import blogListStyles from './portfolio-list.module.scss';
+import { Card } from './card/card';
 
 export default function PortfolioList(): ReactElement {
   const blogData = useBlogData();
@@ -11,7 +11,7 @@ export default function PortfolioList(): ReactElement {
   const { search } = useLocation();
   const { project } = queryString.parse(search);
   const renderBlogData = () => (
-    <div className={blogListStyles.horizontalScrollWrapper}>
+    <div className="">
       {blogData
         .filter((blog) => blog.node?.frontmatter?.title !== '')
         .map((blog) => (
@@ -31,10 +31,11 @@ export default function PortfolioList(): ReactElement {
         ))}
     </div>
   );
+
   return (
     <section>
-      <div className="container mx-auto px-6">
-        <h3 className="font-semibold text-3xl ">Portfolio</h3>
+      <div className="">
+        <h3 className="">Portfolio</h3>
       </div>
       <div>{renderBlogData()}</div>
     </section>

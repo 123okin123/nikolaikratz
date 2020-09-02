@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react';
-import styles from './button.module.scss';
 
 interface ButtonProps {
   children: ReactElement | string
@@ -7,7 +6,7 @@ interface ButtonProps {
 
 export default function Button({ children }: ButtonProps): ReactElement {
   return (
-    <button type="button" className={`${styles.btn} ${styles.btnBlue}`}>
+    <button type="button">
       {children}
     </button>
   );

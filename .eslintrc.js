@@ -1,9 +1,9 @@
 // const path = require('path');
 
 module.exports = {
-  extends: ['airbnb', 'plugin:@typescript-eslint/recommended', 'plugin:css-modules/recommended'],
+  extends: ['airbnb', 'plugin:@typescript-eslint/recommended'],
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'prettier', 'css-modules', 'graphql', 'better-styled-components'],
+  plugins: ['@typescript-eslint', 'prettier', 'graphql'],
   settings: {
     'import/parsers': {
       '@typescript-eslint/parser': ['.ts', '.tsx'],
@@ -27,16 +27,9 @@ module.exports = {
     ],
     'react/no-unescaped-entities': [0],
     'react/prop-types': [0],
-    'css-modules/no-unused-class': [1, { camelCase: true }],
-    'css-modules/no-undef-class': [1, { camelCase: true }],
     'import/prefer-default-export': [0],
     '@typescript-eslint/no-non-null-assertion': [1],
-    'better-styled-components/sort-declarations-alphabetically': [2],
     camelcase: [1],
-    // 'graphql/template-strings': ['error', {
-    //   env: 'relay',
-    //   tagName: 'graphql',
-    //   schemaJsonFilepath: path.resolve(__dirname, 'src/__generated__gatsby-introspection.json'),
-    // }],
+    'max-len': [1],
   },
 };

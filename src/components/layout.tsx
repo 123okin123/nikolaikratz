@@ -1,10 +1,14 @@
 import React, { ReactElement } from 'react';
+import { Normalize } from 'styled-normalize';
 
 export default function Layout({ children }:
 {children: ReactElement[] | ReactElement}): ReactElement {
   return (
-    <div className="">
-      {children}
-    </div>
+    <>
+      <Normalize />
+      <div>
+        {children}
+      </div>
+    </>
   );
 }

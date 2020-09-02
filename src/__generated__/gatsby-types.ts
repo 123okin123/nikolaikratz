@@ -2160,8 +2160,6 @@ type Query_siteArgs = {
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
   port: Maybe<IntQueryOperatorInput>;
   host: Maybe<StringQueryOperatorInput>;
-  polyfill: Maybe<BooleanQueryOperatorInput>;
-  pathPrefix: Maybe<StringQueryOperatorInput>;
   id: Maybe<StringQueryOperatorInput>;
   parent: Maybe<NodeFilterInput>;
   children: Maybe<NodeFilterListInput>;
@@ -2290,8 +2288,6 @@ type Site = Node & {
   readonly siteMetadata: Maybe<SiteSiteMetadata>;
   readonly port: Maybe<Scalars['Int']>;
   readonly host: Maybe<Scalars['String']>;
-  readonly polyfill: Maybe<Scalars['Boolean']>;
-  readonly pathPrefix: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly parent: Maybe<Node>;
   readonly children: ReadonlyArray<Node>;
@@ -2504,8 +2500,6 @@ enum SiteFieldsEnum {
   siteMetadata___menu___link = 'siteMetadata.menu.link',
   port = 'port',
   host = 'host',
-  polyfill = 'polyfill',
-  pathPrefix = 'pathPrefix',
   id = 'id',
   parent___id = 'parent.id',
   parent___parent___id = 'parent.parent.id',
@@ -2599,8 +2593,6 @@ type SiteFilterInput = {
   readonly siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
   readonly port: Maybe<IntQueryOperatorInput>;
   readonly host: Maybe<StringQueryOperatorInput>;
-  readonly polyfill: Maybe<BooleanQueryOperatorInput>;
-  readonly pathPrefix: Maybe<StringQueryOperatorInput>;
   readonly id: Maybe<StringQueryOperatorInput>;
   readonly parent: Maybe<NodeFilterInput>;
   readonly children: Maybe<NodeFilterListInput>;
@@ -2727,8 +2719,6 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___include_favicon = 'pluginCreator.pluginOptions.include_favicon',
   pluginCreator___pluginOptions___legacy = 'pluginCreator.pluginOptions.legacy',
   pluginCreator___pluginOptions___theme_color_in_head = 'pluginCreator.pluginOptions.theme_color_in_head',
-  pluginCreator___pluginOptions___postCssPlugins = 'pluginCreator.pluginOptions.postCssPlugins',
-  pluginCreator___pluginOptions___postCssPlugins___purge = 'pluginCreator.pluginOptions.postCssPlugins.purge',
   pluginCreator___pluginOptions___path = 'pluginCreator.pluginOptions.path',
   pluginCreator___pluginOptions___ignore = 'pluginCreator.pluginOptions.ignore',
   pluginCreator___pluginOptions___pathCheck = 'pluginCreator.pluginOptions.pathCheck',
@@ -3026,9 +3016,6 @@ enum SitePluginFieldsEnum {
   pluginOptions___include_favicon = 'pluginOptions.include_favicon',
   pluginOptions___legacy = 'pluginOptions.legacy',
   pluginOptions___theme_color_in_head = 'pluginOptions.theme_color_in_head',
-  pluginOptions___postCssPlugins = 'pluginOptions.postCssPlugins',
-  pluginOptions___postCssPlugins___purge = 'pluginOptions.postCssPlugins.purge',
-  pluginOptions___postCssPlugins___future___removeDeprecatedGapUtilities = 'pluginOptions.postCssPlugins.future.removeDeprecatedGapUtilities',
   pluginOptions___path = 'pluginOptions.path',
   pluginOptions___ignore = 'pluginOptions.ignore',
   pluginOptions___pathCheck = 'pluginOptions.pathCheck',
@@ -3158,7 +3145,6 @@ type SitePluginPluginOptions = {
   readonly include_favicon: Maybe<Scalars['Boolean']>;
   readonly legacy: Maybe<Scalars['Boolean']>;
   readonly theme_color_in_head: Maybe<Scalars['Boolean']>;
-  readonly postCssPlugins: Maybe<ReadonlyArray<Maybe<SitePluginPluginOptionsPostCssPlugins>>>;
   readonly path: Maybe<Scalars['String']>;
   readonly ignore: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly pathCheck: Maybe<Scalars['Boolean']>;
@@ -3178,7 +3164,6 @@ type SitePluginPluginOptionsFilterInput = {
   readonly include_favicon: Maybe<BooleanQueryOperatorInput>;
   readonly legacy: Maybe<BooleanQueryOperatorInput>;
   readonly theme_color_in_head: Maybe<BooleanQueryOperatorInput>;
-  readonly postCssPlugins: Maybe<SitePluginPluginOptionsPostCssPluginsFilterListInput>;
   readonly path: Maybe<StringQueryOperatorInput>;
   readonly ignore: Maybe<StringQueryOperatorInput>;
   readonly pathCheck: Maybe<BooleanQueryOperatorInput>;
@@ -3218,150 +3203,6 @@ type SitePluginPluginOptionsPluginsPluginOptions = {
 type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
   readonly maxWidth: Maybe<IntQueryOperatorInput>;
   readonly linkImagesToOriginal: Maybe<BooleanQueryOperatorInput>;
-};
-
-type SitePluginPluginOptionsPostCssPlugins = {
-  readonly purge: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly theme: Maybe<SitePluginPluginOptionsPostCssPluginsTheme>;
-  readonly future: Maybe<SitePluginPluginOptionsPostCssPluginsFuture>;
-};
-
-type SitePluginPluginOptionsPostCssPluginsFilterInput = {
-  readonly purge: Maybe<StringQueryOperatorInput>;
-  readonly theme: Maybe<SitePluginPluginOptionsPostCssPluginsThemeFilterInput>;
-  readonly future: Maybe<SitePluginPluginOptionsPostCssPluginsFutureFilterInput>;
-};
-
-type SitePluginPluginOptionsPostCssPluginsFilterListInput = {
-  readonly elemMatch: Maybe<SitePluginPluginOptionsPostCssPluginsFilterInput>;
-};
-
-type SitePluginPluginOptionsPostCssPluginsFuture = {
-  readonly removeDeprecatedGapUtilities: Maybe<Scalars['Boolean']>;
-};
-
-type SitePluginPluginOptionsPostCssPluginsFutureFilterInput = {
-  readonly removeDeprecatedGapUtilities: Maybe<BooleanQueryOperatorInput>;
-};
-
-type SitePluginPluginOptionsPostCssPluginsTheme = {
-  readonly extend: Maybe<SitePluginPluginOptionsPostCssPluginsThemeExtend>;
-};
-
-type SitePluginPluginOptionsPostCssPluginsThemeExtend = {
-  readonly fontFamily: Maybe<SitePluginPluginOptionsPostCssPluginsThemeExtendFontFamily>;
-  readonly colors: Maybe<SitePluginPluginOptionsPostCssPluginsThemeExtendColors>;
-  readonly borderRadius: Maybe<SitePluginPluginOptionsPostCssPluginsThemeExtendBorderRadius>;
-};
-
-type SitePluginPluginOptionsPostCssPluginsThemeExtendBorderRadius = {
-  readonly xlg: Maybe<Scalars['String']>;
-};
-
-type SitePluginPluginOptionsPostCssPluginsThemeExtendBorderRadiusFilterInput = {
-  readonly xlg: Maybe<StringQueryOperatorInput>;
-};
-
-type SitePluginPluginOptionsPostCssPluginsThemeExtendColors = {
-  readonly primary: Maybe<SitePluginPluginOptionsPostCssPluginsThemeExtendColorsPrimary>;
-  readonly secondary: Maybe<SitePluginPluginOptionsPostCssPluginsThemeExtendColorsSecondary>;
-  readonly neutral: Maybe<SitePluginPluginOptionsPostCssPluginsThemeExtendColorsNeutral>;
-};
-
-type SitePluginPluginOptionsPostCssPluginsThemeExtendColorsFilterInput = {
-  readonly primary: Maybe<SitePluginPluginOptionsPostCssPluginsThemeExtendColorsPrimaryFilterInput>;
-  readonly secondary: Maybe<SitePluginPluginOptionsPostCssPluginsThemeExtendColorsSecondaryFilterInput>;
-  readonly neutral: Maybe<SitePluginPluginOptionsPostCssPluginsThemeExtendColorsNeutralFilterInput>;
-};
-
-type SitePluginPluginOptionsPostCssPluginsThemeExtendColorsNeutral = {
-  readonly _100: Maybe<Scalars['String']>;
-  readonly _200: Maybe<Scalars['String']>;
-  readonly _300: Maybe<Scalars['String']>;
-  readonly _400: Maybe<Scalars['String']>;
-  readonly _500: Maybe<Scalars['String']>;
-  readonly _600: Maybe<Scalars['String']>;
-  readonly _700: Maybe<Scalars['String']>;
-  readonly _800: Maybe<Scalars['String']>;
-  readonly _900: Maybe<Scalars['String']>;
-};
-
-type SitePluginPluginOptionsPostCssPluginsThemeExtendColorsNeutralFilterInput = {
-  readonly _100: Maybe<StringQueryOperatorInput>;
-  readonly _200: Maybe<StringQueryOperatorInput>;
-  readonly _300: Maybe<StringQueryOperatorInput>;
-  readonly _400: Maybe<StringQueryOperatorInput>;
-  readonly _500: Maybe<StringQueryOperatorInput>;
-  readonly _600: Maybe<StringQueryOperatorInput>;
-  readonly _700: Maybe<StringQueryOperatorInput>;
-  readonly _800: Maybe<StringQueryOperatorInput>;
-  readonly _900: Maybe<StringQueryOperatorInput>;
-};
-
-type SitePluginPluginOptionsPostCssPluginsThemeExtendColorsPrimary = {
-  readonly _100: Maybe<Scalars['String']>;
-  readonly _200: Maybe<Scalars['String']>;
-  readonly _300: Maybe<Scalars['String']>;
-  readonly _400: Maybe<Scalars['String']>;
-  readonly _500: Maybe<Scalars['String']>;
-  readonly _600: Maybe<Scalars['String']>;
-  readonly _700: Maybe<Scalars['String']>;
-  readonly _800: Maybe<Scalars['String']>;
-  readonly _900: Maybe<Scalars['String']>;
-};
-
-type SitePluginPluginOptionsPostCssPluginsThemeExtendColorsPrimaryFilterInput = {
-  readonly _100: Maybe<StringQueryOperatorInput>;
-  readonly _200: Maybe<StringQueryOperatorInput>;
-  readonly _300: Maybe<StringQueryOperatorInput>;
-  readonly _400: Maybe<StringQueryOperatorInput>;
-  readonly _500: Maybe<StringQueryOperatorInput>;
-  readonly _600: Maybe<StringQueryOperatorInput>;
-  readonly _700: Maybe<StringQueryOperatorInput>;
-  readonly _800: Maybe<StringQueryOperatorInput>;
-  readonly _900: Maybe<StringQueryOperatorInput>;
-};
-
-type SitePluginPluginOptionsPostCssPluginsThemeExtendColorsSecondary = {
-  readonly _100: Maybe<Scalars['String']>;
-  readonly _200: Maybe<Scalars['String']>;
-  readonly _300: Maybe<Scalars['String']>;
-  readonly _400: Maybe<Scalars['String']>;
-  readonly _500: Maybe<Scalars['String']>;
-  readonly _600: Maybe<Scalars['String']>;
-  readonly _700: Maybe<Scalars['String']>;
-  readonly _800: Maybe<Scalars['String']>;
-  readonly _900: Maybe<Scalars['String']>;
-};
-
-type SitePluginPluginOptionsPostCssPluginsThemeExtendColorsSecondaryFilterInput = {
-  readonly _100: Maybe<StringQueryOperatorInput>;
-  readonly _200: Maybe<StringQueryOperatorInput>;
-  readonly _300: Maybe<StringQueryOperatorInput>;
-  readonly _400: Maybe<StringQueryOperatorInput>;
-  readonly _500: Maybe<StringQueryOperatorInput>;
-  readonly _600: Maybe<StringQueryOperatorInput>;
-  readonly _700: Maybe<StringQueryOperatorInput>;
-  readonly _800: Maybe<StringQueryOperatorInput>;
-  readonly _900: Maybe<StringQueryOperatorInput>;
-};
-
-type SitePluginPluginOptionsPostCssPluginsThemeExtendFilterInput = {
-  readonly fontFamily: Maybe<SitePluginPluginOptionsPostCssPluginsThemeExtendFontFamilyFilterInput>;
-  readonly colors: Maybe<SitePluginPluginOptionsPostCssPluginsThemeExtendColorsFilterInput>;
-  readonly borderRadius: Maybe<SitePluginPluginOptionsPostCssPluginsThemeExtendBorderRadiusFilterInput>;
-};
-
-type SitePluginPluginOptionsPostCssPluginsThemeExtendFontFamily = {
-  readonly sans: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-};
-
-type SitePluginPluginOptionsPostCssPluginsThemeExtendFontFamilyFilterInput = {
-  readonly sans: Maybe<StringQueryOperatorInput>;
-};
-
-type SitePluginPluginOptionsPostCssPluginsThemeFilterInput = {
-  readonly extend: Maybe<SitePluginPluginOptionsPostCssPluginsThemeExtendFilterInput>;
 };
 
 type SitePluginSortInput = {

@@ -4,10 +4,10 @@ import * as React from 'react';
 import { memo, useRef } from 'react';
 import { useNavigate } from '@reach/router';
 import styled from 'styled-components';
-import { useInvertedBorderRadius } from '../../hooks/utils/use-inverted-border-radius';
-import { useScrollConstraints } from '../../hooks/utils/use-scroll-constraints';
 import { closeSpring, openSpring } from './animations';
 import { CardInnerContent, CardContentData } from './card-inner-content';
+import { useInvertedBorderRadius } from '../../../hooks/utils/use-inverted-border-radius';
+import { useScrollConstraints } from '../../../hooks/utils/use-scroll-constraints';
 
 export interface CardData {
   id: string;
