@@ -63,8 +63,9 @@ function SEO({
       ].concat(meta)}
     >
       <title>{title}</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
       <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet" />
-      <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i" rel="stylesheet" />
     </Helmet>
   );
 }

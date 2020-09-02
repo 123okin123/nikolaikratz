@@ -1,5 +1,6 @@
 import { PageProps } from 'gatsby';
 import React from 'react';
+import { Container, Row, Col } from 'styled-bootstrap-grid';
 import SEO from '../components/seo';
 import Layout from '../components/layout';
 import PortfolioList from '../components/molecules/portfolio-list';
@@ -7,7 +8,7 @@ import PortfolioList from '../components/molecules/portfolio-list';
 const IndexPage: React.FC<PageProps<null>> = () => (
   <Layout>
     <SEO title="Home" />
-    <div>
+    <Container>
       <section>
         <h1 className="font-bold text-6xl leading-tight">
           Hello,
@@ -28,7 +29,7 @@ const IndexPage: React.FC<PageProps<null>> = () => (
       <section>
         <PortfolioList />
       </section>
-    </div>
+    </Container>
   </Layout>
 );
 
