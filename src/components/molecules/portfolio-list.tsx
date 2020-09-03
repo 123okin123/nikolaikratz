@@ -4,6 +4,7 @@ import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import useBlogData from '../../hooks/static-queries/use-blog-data';
 import { Card } from './card/card';
+import { Container } from 'styled-bootstrap-grid';
 
 export default function PortfolioList(): ReactElement {
   const blogData = useBlogData();
@@ -13,9 +14,9 @@ export default function PortfolioList(): ReactElement {
 
   return (
     <section>
-      <div>
-        <h3>Portfolio</h3>
-      </div>
+      <Container>
+        <h3 style={{ marginTop: '50px' }}>Portfolio</h3>
+      </Container>
       <ScrollWrapper>
         {blogData
           .filter((blog) => blog.node?.frontmatter?.title !== '')
@@ -45,9 +46,10 @@ const ScrollWrapper = styled.div`
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
+  padding: 20px 40px;
 `;
 
 const CardWrapper = styled.div`
   flex: 0 0 auto;
-  margin: 40px 40px 40px 0;
+  margin: 0 20px;
 `;

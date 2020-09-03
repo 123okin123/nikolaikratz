@@ -1,13 +1,10 @@
-import { motion, useMotionValue } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Link } from 'gatsby';
 import * as React from 'react';
-import { memo, useRef } from 'react';
-import { useNavigate } from '@reach/router';
+import { memo } from 'react';
 import styled from 'styled-components';
 import { closeSpring, openSpring } from './animations';
-import { CardInnerContent, CardContentData } from './card-inner-content';
-import { useInvertedBorderRadius } from '../../../hooks/utils/use-inverted-border-radius';
-import { useScrollConstraints } from '../../../hooks/utils/use-scroll-constraints';
+import { CardContentData, CardInnerContent } from './card-inner-content';
 
 export interface CardData {
   id: string;
@@ -15,14 +12,10 @@ export interface CardData {
   isSelected: boolean;
 }
 
-// Distance in pixels a user has to scroll a card down before we recognise
-// a swipe-to dismiss action.
-const dismissDistance = 150;
-
 export const Card = memo(
   ({ isSelected, id, data }: CardData) => {
     return (
-      <div style={{ position: 'relative', width: '200px', height: '300px' }}>
+      <div style={{ position: 'relative', width: '200px', height: '200px' }}>
         <Overlay isSelected={isSelected} />
 
         <CardContentContainer
@@ -70,6 +63,7 @@ const CardContentContainer = styled(motion.div)`
     position: fixed;
     right: 0;
     top: 0;
+    height: 100vh;
     z-index: 1;
     border-radius: 0px;
   }

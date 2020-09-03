@@ -12,50 +12,51 @@ p {
 
 h1 {
   font-weight: 800;
-  ${media.sm`{
+  ${media.xs`
     font-size: 3em;
   `}
-  ${media.md`{
+
+  ${media.sm`
   font-size: 4em;
   `}
-  ${media.lg`{
+  ${media.md`
   font-size: 4.5em;
   `}
 }
 
 h2 {
   font-weight: 300;
-  ${media.sm`{
+  ${media.xs`
   font-size: 1.7em;
   `}
-  ${media.md`{
+  ${media.sm`
   font-size: 2.2em;
   `}
-  ${media.lg`{
+  ${media.md`
   font-size: 2.4em;
   `}
 }
 h3 {
   font-weight: 600;
-  ${media.sm`{
+  ${media.xs`
   font-size: 1.6em;
   `}
-  ${media.md`{
+  ${media.sm`
   font-size: 1.8em;
   `}
-  ${media.lg`{
+  ${media.md`
   font-size: 2em;
   `}
 }
 
 h5, h6 {
-  ${media.sm`{
+  ${media.xs`
   font-size: 1.5em;
   `}
-  ${media.md`{
+  ${media.sm`
   font-size: 2em;
   `}
-  ${media.lg`{
+  ${media.md`
   font-size: 2.5em;
   `}
 }

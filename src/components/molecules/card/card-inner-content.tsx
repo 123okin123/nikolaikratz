@@ -48,15 +48,26 @@ export const CardInnerContent = React.memo<CardContentDataProps>(
           </CloseLink>
         </motion.div>
 
-        <div style={{ color: data.titleColor }}>
+        <Title style={{ color: data.titleColor }}>
           <p>{data.title}</p>
-        </div>
+        </Title>
         <img src={icons[data.type!]} alt={data.type} />
         <p>{data.type}</p>
       </Wrapper>
     );
   }
 );
+
+const Title = styled(motion.div)`
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+
+  .open & {
+    bottom: auto;
+    top: 40px;
+  }
+`;
 
 const CloseLink = styled(IconButton)`
   position: absolute;
