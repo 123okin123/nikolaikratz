@@ -55,8 +55,19 @@ export const CardInnerContent = React.memo<CardContentDataProps>(
         >
           {data.title}
         </Title>
-
-        <Content>test</Content>
+        <Content>
+          <motion.p
+            variants={{
+              visible: { opacity: 1 },
+              hidden: { opacity: 0 }
+            }}
+            initial={'hidden'}
+            animate={isSelected ? 'visible' : 'hidden'}
+            transition={{ ease: 'easeOut', duration: 2, delay: 0.3 }}
+          >
+            tccdscscsc cdscd cscd cdscd ds dc cs cd cdjs cjk est
+          </motion.p>
+        </Content>
         <Icon>{icons[data.type!] === 'app' ? <IoIosPhonePortrait /> : <IoIosLaptop />}</Icon>
         <p>{data.type}</p>
       </Wrapper>
@@ -80,6 +91,7 @@ const Content = styled(motion.div)`
   height: 0;
   background-color: white;
   width: 100%;
+  padding: 20px;
   .open & {
     height: 50%;
   }
