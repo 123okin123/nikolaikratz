@@ -39,6 +39,8 @@ const IndexPage: React.FC<PageProps<null>> = () => (
     <section>
       <PortfolioList />
     </section>
+
+    <section style={{ height: '500px' }}></section>
   </Layout>
 );
 

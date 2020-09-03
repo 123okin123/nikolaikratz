@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { BiXCircle } from 'react-icons/bi';
 import { IconButton } from '../../atoms/icon-button';
+import { openSpring, closeSpring } from './animations';
 
 export interface CardContentData {
   title?: string;
@@ -48,9 +49,14 @@ export const CardInnerContent = React.memo<CardContentDataProps>(
           </CloseLink>
         </motion.div>
 
-        <Title style={{ color: data.titleColor }}>
+        <Title
+          transition={isSelected ? openSpring : closeSpring}
+          style={{ color: data.titleColor }}
+        >
           <p>{data.title}</p>
         </Title>
+
+        <Content>test</Content>
         <img src={icons[data.type!]} alt={data.type} />
         <p>{data.type}</p>
       </Wrapper>
@@ -65,7 +71,16 @@ const Title = styled(motion.div)`
 
   .open & {
     bottom: auto;
-    top: 40px;
+    top: 40%;
+  }
+`;
+
+const Content = styled(motion.div)`
+  height: 0;
+  background-color: white;
+  width: 100%;
+  .open & {
+    height: 50%;
   }
 `;
 
@@ -82,4 +97,7 @@ const Wrapper = styled.div`
 
 const Background = styled.div`
   height: 100%;
+  .open & {
+    height: 50%;
+  }
 `;
