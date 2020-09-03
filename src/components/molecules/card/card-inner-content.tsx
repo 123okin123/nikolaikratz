@@ -1,8 +1,10 @@
-import { useInvertedScale } from 'framer-motion';
+import { useInvertedScale, motion } from 'framer-motion';
 import { FluidObject } from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import { BiXCircle } from 'react-icons/bi';
+import { IconButton } from '../../atoms/icon-button';
 
 export interface CardContentData {
   title?: string;
@@ -19,8 +21,7 @@ export interface CardContentDataProps {
 }
 
 export const CardInnerContent = React.memo<CardContentDataProps>(
-  ({ data }: CardContentDataProps) => {
-    const inverted = useInvertedScale();
+  ({ isSelected, data }: CardContentDataProps) => {
     const icons: { [type: string]: string } = {
       web: '/image/laptop.svg',
       app: '/image/smart-phone.svg'
@@ -33,18 +34,36 @@ export const CardInnerContent = React.memo<CardContentDataProps>(
             background: `linear-gradient(180deg, ${data.bgGradientFrom}, ${data.bgGradientTo})`
           }}
         />
+        <motion.div
+          initial="hidden"
+          animate={isSelected ? 'visible' : 'hidden'}
+          transition={isSelected ? { delay: 0.5 } : {}}
+          variants={{
+            visible: { opacity: 1 },
+            hidden: { opacity: 0 }
+          }}
+        >
+          <CloseLink to="/">
+            <BiXCircle />
+          </CloseLink>
+        </motion.div>
 
-        <Link to="/">x</Link>
         <div style={{ color: data.titleColor }}>
           <p>{data.title}</p>
         </div>
-
         <img src={icons[data.type!]} alt={data.type} />
         <p>{data.type}</p>
       </Wrapper>
     );
   }
 );
+
+const CloseLink = styled(IconButton)`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+`;
 
 const Wrapper = styled.div`
   height: 100%;
