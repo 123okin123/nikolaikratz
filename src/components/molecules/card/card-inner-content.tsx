@@ -1,11 +1,11 @@
-import { useInvertedScale, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { FluidObject } from 'gatsby-image';
 import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'gatsby';
 import { BiXCircle } from 'react-icons/bi';
+import { IoIosLaptop, IoIosPhonePortrait } from 'react-icons/io';
+import styled from 'styled-components';
 import { IconButton } from '../../atoms/icon-button';
-import { openSpring, closeSpring } from './animations';
+import { closeSpring, openSpring } from './animations';
 
 export interface CardContentData {
   title?: string;
@@ -53,21 +53,22 @@ export const CardInnerContent = React.memo<CardContentDataProps>(
           transition={isSelected ? openSpring : closeSpring}
           style={{ color: data.titleColor }}
         >
-          <p>{data.title}</p>
+          {data.title}
         </Title>
 
         <Content>test</Content>
-        <img src={icons[data.type!]} alt={data.type} />
+        <Icon>{icons[data.type!] === 'app' ? <IoIosPhonePortrait /> : <IoIosLaptop />}</Icon>
         <p>{data.type}</p>
       </Wrapper>
     );
   }
 );
 
-const Title = styled(motion.div)`
+const Title = styled(motion.p)`
   position: absolute;
-  bottom: 10px;
-  left: 10px;
+  bottom: 0px;
+  left: 25px;
+  font-weight: 500;
 
   .open & {
     bottom: auto;
@@ -93,11 +94,27 @@ const CloseLink = styled(IconButton)`
 
 const Wrapper = styled.div`
   height: 100%;
+  max-width: 500px;
+  margin: auto;
+  position: relative;
 `;
 
 const Background = styled.div`
   height: 100%;
   .open & {
     height: 50%;
+  }
+`;
+
+const Icon = styled.div`
+  position: absolute;
+  font-size: 3em;
+  top: calc(50% - 0.5em);
+  left: calc(50% - 0.5em);
+  color: ${({ theme }) => theme.colors.white};
+
+  .open & {
+    top: calc(40% - 30px);
+    left: 25px;
   }
 `;
