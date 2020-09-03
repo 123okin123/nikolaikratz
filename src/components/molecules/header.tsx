@@ -6,7 +6,6 @@ const Header = (): ReactElement => {
   const { menu } = useSiteMetadata();
   return (
     <header>
-
       <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
           <svg
@@ -21,7 +20,10 @@ const Header = (): ReactElement => {
           <span className="font-semibold text-xl tracking-tight">Tailwind CSS</span>
         </div>
         <div className="block lg:hidden">
-          <button type="button" className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+          <button
+            type="button"
+            className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white"
+          >
             <svg
               className="fill-current h-3 w-3"
               viewBox="0 0 20 20"
@@ -34,16 +36,15 @@ const Header = (): ReactElement => {
         </div>
         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
           <div className="text-sm lg:flex-grow">
-
-            {menu.map((entry) => (
+            {menu.map((entry, index) => (
               <Link
+                key={index}
                 to={entry.link}
                 className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
               >
                 {entry.name}
               </Link>
             ))}
-
           </div>
           <div>
             <Link
@@ -55,7 +56,6 @@ const Header = (): ReactElement => {
           </div>
         </div>
       </nav>
-
     </header>
   );
 };

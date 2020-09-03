@@ -20,7 +20,7 @@ export default function PortfolioList(): ReactElement {
         {blogData
           .filter((blog) => blog.node?.frontmatter?.title !== '')
           .map((blog) => (
-            <CardWrapper>
+            <CardWrapper key={blog.node.id}>
               <Card
                 key={blog.node.id}
                 isSelected={project === blog.node.id}
@@ -30,24 +30,23 @@ export default function PortfolioList(): ReactElement {
                   bgGradientFrom: blog.node.frontmatter?.bgGradientFrom,
                   bgGradientTo: blog.node.frontmatter?.bgGradientTo,
                   image: blog.node.frontmatter?.image?.childImageSharp?.fluid,
-                  type: blog.node.frontmatter?.type || 'web',
+                  type: blog.node.frontmatter?.type || 'web'
                 }}
                 id={blog.node.id}
               />
             </CardWrapper>
           ))}
-
       </ScrollWrapper>
     </section>
   );
 }
 
 const ScrollWrapper = styled.div`
-    display: flex;
+  display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
 `;
 
 const CardWrapper = styled.div`
-flex: 0 0 auto;
+  flex: 0 0 auto;
 `;

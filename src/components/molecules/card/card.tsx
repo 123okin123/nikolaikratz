@@ -20,11 +20,7 @@ export interface CardData {
 const dismissDistance = 150;
 
 export const Card = memo(
-  ({
-    isSelected,
-    id,
-    data,
-  }: CardData) => {
+  ({ isSelected, id, data }: CardData) => {
     const y = useMotionValue(0);
     const zIndex = useMotionValue(isSelected ? 2 : 0);
     const navigate = useNavigate();
@@ -38,12 +34,12 @@ export const Card = memo(
     const constraints = useScrollConstraints(cardRef, isSelected);
 
     function checkSwipeToDismiss() {
-      if (y.get() > dismissDistance) { navigate('/'); }
+      if (y.get() > dismissDistance) {
+        navigate('/');
+      }
     }
 
-    function checkZIndex(latest: {
-      [key: string]: React.ReactText;
-    }) {
+    function checkZIndex(latest: { [key: string]: React.ReactText }) {
       if (isSelected) {
         zIndex.set(2);
       } else if (!isSelected && latest.scaleX < 1.01) {
@@ -81,10 +77,10 @@ export const Card = memo(
       </div>
     );
   },
-  (prev, next) => prev.isSelected === next.isSelected,
+  (prev, next) => prev.isSelected === next.isSelected
 );
 
-const Overlay = ({ isSelected }: {isSelected: boolean}) => (
+const Overlay = ({ isSelected }: { isSelected: boolean }) => (
   <OverlayContent
     initial={false}
     animate={{ opacity: isSelected ? 1 : 0 }}
@@ -103,16 +99,15 @@ const CardContentContainer = styled.div`
   width: 100%;
   &.open {
     left: 0;
-  overflow: hidden;
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 1;
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1;
   }
 `;
 
 const CardContent = styled(motion.div)`
-
   -moz-box-shadow: 10px 10px 30px 0px rgba(0, 0, 0, 0.29);
   -webkit-box-shadow: 10px 10px 30px 0px rgba(0, 0, 0, 0.29);
 
@@ -125,12 +120,12 @@ const CardContent = styled(motion.div)`
   position: relative;
   width: 100%;
 
-.open & {
-  height: auto;
-  max-width: 700px;
-  overflow: hidden;
-  width: 100%;
-}
+  .open & {
+    height: auto;
+    max-width: 700px;
+    overflow: hidden;
+    width: 100%;
+  }
 `;
 
 const CardOpenLink = styled(Link)`
@@ -150,12 +145,12 @@ const OverlayContent = styled(motion.div)`
   width: 100vw;
   will-change: opacity;
   z-index: 1;
-& a {
-  bottom: 0;
-  display: block;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100vw;
-}
+  & a {
+    bottom: 0;
+    display: block;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+  }
 `;

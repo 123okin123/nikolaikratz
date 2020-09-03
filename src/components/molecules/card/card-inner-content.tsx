@@ -19,17 +19,18 @@ export interface CardContentDataProps {
 export const CardInnerContent = React.memo<CardContentDataProps>(
   ({ data }: CardContentDataProps) => {
     const inverted = useInvertedScale();
-    const icons: {[type: string]: string} = {
+    const icons: { [type: string]: string } = {
       web: '/image/laptop.svg',
-      app: '/image/smart-phone.svg',
+      app: '/image/smart-phone.svg'
     };
 
     return (
       <div style={{ padding: '20px' }}>
-        <div style={{
-          height: '20px',
-          background: `linear-gradient(180deg, ${data.bgGradientFrom}, ${data.bgGradientTo})`,
-        }}
+        <div
+          style={{
+            height: '20px',
+            background: `linear-gradient(180deg, ${data.bgGradientFrom}, ${data.bgGradientTo})`
+          }}
         />
 
         <div style={{ color: data.titleColor }}>
@@ -40,5 +41,5 @@ export const CardInnerContent = React.memo<CardContentDataProps>(
         <p>{data.type}</p>
       </div>
     );
-  },
+  }
 );

@@ -35,6 +35,5 @@ export const Title = ({ title, category, isSelected }) => {
  * the scale of the parent component. Because of this we want to translate
  * through scaled coordinate space, and can use the transformTemplate prop to do so.
  */
-const scaleTranslate = ({
-  x, y, scaleX, scaleY,
-}) => `scaleX(${scaleX}) scaleY(${scaleY}) translate(${x}, ${y}) translateZ(0)`;
+const scaleTranslate = ({ x, y, scaleX, scaleY }) =>
+  `scaleX(${scaleX}) scaleY(${scaleY}) translate(${x}, ${y}) translateZ(0)`;
