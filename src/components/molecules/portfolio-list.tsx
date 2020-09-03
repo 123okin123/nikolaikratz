@@ -49,4 +49,5 @@ const ScrollWrapper = styled.div`
 
 const CardWrapper = styled.div`
   flex: 0 0 auto;
+  margin: 40px 40px 40px 0;
 `;

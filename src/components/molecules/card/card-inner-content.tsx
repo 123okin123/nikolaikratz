@@ -1,6 +1,8 @@
 import { useInvertedScale } from 'framer-motion';
 import { FluidObject } from 'gatsby-image';
 import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'gatsby';
 
 export interface CardContentData {
   title?: string;
@@ -25,21 +27,29 @@ export const CardInnerContent = React.memo<CardContentDataProps>(
     };
 
     return (
-      <div style={{ padding: '20px' }}>
-        <div
+      <Wrapper>
+        <Background
           style={{
-            height: '20px',
             background: `linear-gradient(180deg, ${data.bgGradientFrom}, ${data.bgGradientTo})`
           }}
         />
 
+        <Link to="/">x</Link>
         <div style={{ color: data.titleColor }}>
           <p>{data.title}</p>
         </div>
 
         <img src={icons[data.type!]} alt={data.type} />
         <p>{data.type}</p>
-      </div>
+      </Wrapper>
     );
   }
 );
+
+const Wrapper = styled.div`
+  height: 100%;
+`;
+
+const Background = styled.div`
+  height: 100%;
+`;
